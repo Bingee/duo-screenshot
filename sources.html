@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>底图对比 · Duo截图生成器</title>
+    <meta
+      name="description"
+      content="Duo 设置页底图与真机实拍的来源、尺寸和界面差异。"
+    />
+    <link rel="icon" type="image/svg+xml" href="./assets/icon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .source-page {
+        width: min(1000px, calc(100% - 40px));
+        margin: 32px auto 56px;
+      }
+      .source-page h1 {
+        position: static;
+        width: auto;
+        height: auto;
+        clip: auto;
+        overflow: visible;
+        font-size: 26px;
+        margin: 28px 0 12px;
+      }
+      .source-page h2 {
+        font-size: 16px;
+        margin: 32px 0 14px;
+      }
+      .source-page p,
+      .source-page td,
+      .source-page th {
+        font-size: 13px;
+        line-height: 1.9;
+      }
+      .source-page p {
+        max-width: 760px;
+      }
+      .source-page a {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .back {
+        display: inline-block;
+        font-size: 12px;
+        min-height: 44px;
+        padding-block: 10px;
+        color: var(--muted);
+      }
+      .comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 28px;
+        align-items: start;
+      }
+      .comparison figure {
+        margin: 0;
+      }
+      .comparison img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+      }
+      .comparison figcaption {
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-top: 10px;
+      }
+      .source-page table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+      }
+      .source-page td,
+      .source-page th {
+        padding: 14px 12px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      .source-page th {
+        font-weight: 500;
+        background: var(--canvas);
+      }
+      .source-page td:first-child {
+        width: 16%;
+        white-space: nowrap;
+      }
+      .source-page .note {
+        color: var(--muted);
+        font-size: 11px;
+      }
+      @media (max-width: 600px) {
+        .comparison {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .source-page td,
+        .source-page th {
+          font-size: 11px;
+          padding: 10px 7px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="source-page">
+      <a class="back" href="./">← 返回生成器</a>
+      <h1>底图与真机的区别</h1>
+      <p>
+        当前生成器使用 iPhone Duo
+        模拟器的原始截图。网上找到的真机设置页是实拍照片，无法直接用作清晰的截图底图，因此本次保留原图，并在页面标明来源。
+      </p>
+      <div class="comparison">
+        <figure>
+          <img
+            src="./assets/open.png"
+            width="2853"
+            height="2007"
+            alt="现用模拟器底图：左侧设置列表，右侧通用页，账号尚未登录"
+          />
+          <figcaption>
+            现用底图 · iOS 27.1 模拟器<br />2026-10-18 采集，2853 ×
+            2007，右侧为“通用”。
+          </figcaption>
+        </figure>
+        <figure>
+          <a
+            href="https://www.itmedia.co.jp/news/article/2609/18/2000001643/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="./assets/reference-settings-photo.jpg"
+              width="640"
+              height="499"
+              alt="MACお宝鑑定団拍摄的 Duo 真机，显示与亮度设置页，有透视、反光和手指遮挡"
+            />
+          </a>
+          <figcaption>
+            真机实拍 · “显示与亮度”页<br />© MACお宝鑑定団，刊于
+            <a
+              href="https://www.itmedia.co.jp/news/article/2609/18/2000001643/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >ITmedia，2026-09-18</a
+            >。对照图片保持原样；不是屏幕原始截屏。
+          </figcaption>
+        </figure>
+      </div>
+      <h2>核实到的差异</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>对比项</th>
+            <th>现用底图</th>
+            <th>真机 / 网络参考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>内屏尺寸</td>
+            <td>2853 × 2007</td>
+            <td>
+              <a
+                href="https://www.apple.com.cn/iphone-duo/specs/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Apple 技术规格</a
+              >列出 2670 × 1878（横向）。两者比例接近，像素不同。
+            </td>
+          </tr>
+          <tr>
+            <td>设置内容</td>
+            <td>“通用”页；侧栏没有无线局域网、蜂窝网络等连接项。</td>
+            <td>
+              真机实拍显示“显示与亮度”，可见自动锁定、音量键滑动解锁、常亮画面和左端位移等选项。不能把模拟器的菜单当作完整真机菜单。
+            </td>
+          </tr>
+          <tr>
+            <td>账号状态</td>
+            <td>原图未登录；工具只替换头像、名字、时间。</td>
+            <td>
+              这张真机实拍未展示账号区，无法核对登录后的账号卡片。因此生成结果不能视为已验证的登录状态真机截图。
+            </td>
+          </tr>
+          <tr>
+            <td>状态栏</td>
+            <td>时间与状态图标在右侧纵向排列。</td>
+            <td>
+              真机实拍同样在右侧。这个位置不是与普通 iPhone 不同就代表错误。
+            </td>
+          </tr>
+          <tr>
+            <td>底图可用性</td>
+            <td>原尺寸 PNG，区域与像素可验证。</td>
+            <td>
+              实拍仅 640 ×
+              499，有透视、反光、机身边框，且没有账号区和配套外屏截屏，不适合直接替换。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>其他核查来源</h2>
+      <p>
+        <a
+          href="https://keyboardkit.com/blog/2026/10/09/the-keyboardkit-app-is-being-redesigned-for-the-iphone-duo"
+          target="_blank"
+          rel="noopener noreferrer"
+          >KeyboardKit 的展开 / 合起设置图</a
+        >可用于对照分栏方式，但文章发布于上市前，图片带模拟器边框且账号未登录，未作为真机底图采用。
+      </p>
+      <p>
+        截至
+        2026-10-25，本次检索没有找到来源可核实、清晰无透视、包含账号区的中文设置页内外屏原始截图对。现用两张底图未替换，也未通过
+        AI 或手绘补成真机界面。
+      </p>
+      <p class="note">
+        图片来源、SHA-256 与许可范围见
+        <a href="./SOURCES.md">SOURCES.md</a>。对照照片不在项目 MIT
+        代码许可范围内。
+      </p>
+    </main>
+  </body>
+</html>

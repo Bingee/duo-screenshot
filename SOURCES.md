@@ -10,3 +10,20 @@
 合成仅覆盖 `js/templates.mjs` 指定的头像、名字和时间区域。预览在页面中缩放；下载 PNG 保留底图原始尺寸。
 
 MIT License 仅适用于本项目原创代码与图标，不对系统截图或其中的 Apple / iOS 界面、商标授予任何额外权利。第三方素材的权利归其各自权利人所有。本项目与 Apple 无隶属或背书关系。
+
+## 2026-10-25 网络对照核查
+
+[可视化对比](sources.html)。当前底图仍为模拟器采集，不称为真机截屏。
+
+- [Apple 中国技术规格](https://www.apple.com.cn/iphone-duo/specs/)：内屏为 1878 × 2670（竖向规格），外屏为 1398 × 2034。现有内屏图 2853 × 2007 与真机面板像素不同。
+- [ITmedia / MACお宝鑑定団真机上手](https://www.itmedia.co.jp/news/article/2609/18/2000001643/)（2026-09-18）：含“显示与亮度”设置页实拍，可核对纵向右侧状态栏和真机选项。没有完整账号区，且有透视与反光，不能作为原始截屏替代。
+- [KeyboardKit 布局研究](https://keyboardkit.com/blog/2026/10/09/the-keyboardkit-app-is-being-redesigned-for-the-iphone-duo)（2026-10-09）：有设置页内外屏图，但为上市前文章，图带模拟器边框，不能验证来自真机。
+
+对照页引用一张完整实拍照片，仅用于指出底图差异，未加工且未用于生成器底图。版权属于 MACお宝鑑定団，不在 MIT 许可范围内。
+
+- 文件：`assets/reference-settings-photo.jpg`
+- 原图地址：https://www.itmedia.co.jp/news/article/image/2609/18/2000001643/10007084/728
+- 原图尺寸：640 × 499
+- SHA-256：`748f3c8ab2009219e468dbb415d90450665b1f48732f330e3cd0baac5c457e86`
+
+本次未找到可核实的、无透视、包含账号区的中文设置内外屏原始截屏对，因此没有用普通 iPhone/iPad 截图、照片裁切或 AI 图冒充真机底图。模拟器原图未登录账号，生成器的头像与名字替换不会同步改变其他账号状态或设备功能。

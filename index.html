@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
-    <meta name="theme-color" content="#f5f6ef" />
+    <meta name="theme-color" content="#f7f8f4" />
     <meta
       name="description"
       content="上传头像，输入名字，生成 Duo 展开与合起两张原尺寸截图。免费开源，图片仅在本机处理。"
@@ -38,16 +38,8 @@
     </header>
     <main class="workspace">
       <section class="editor" aria-labelledby="editor-title">
-        <div class="editor-intro">
-          <span class="eyebrow">DUO / SCREENSHOT</span>
-          <h1 id="editor-title">换成你的。</h1>
-          <p>一个名字，两种形态。</p>
-        </div>
+        <h1 id="editor-title">编辑截图</h1>
         <div class="profile-fields">
-          <div class="field-label">
-            <span>头像</span
-            ><button id="reset" class="text-button" type="button">重置</button>
-          </div>
           <label class="avatar-picker" id="drop-zone" for="avatar-input">
             <span class="avatar-circle"
               ><img id="avatar-preview" alt="已选头像" hidden /><svg
@@ -58,10 +50,7 @@
                 <circle cx="24" cy="17" r="8" />
                 <path d="M9 42v-4a15 15 0 0 1 30 0v4" /></svg
             ></span>
-            <span
-              ><strong id="avatar-label">选择头像</strong
-              ><span class="upload-note">也可以拖一张图片到这里</span></span
-            >
+            <span><strong id="avatar-label">选择头像</strong></span>
             <svg class="upload-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 16V3m-5 5 5-5 5 5M4 15v5h16v-5" />
             </svg>
@@ -99,32 +88,11 @@
             </button>
           </div>
         </div>
-        <div class="save-area">
-          <button
-            id="save-button"
-            class="primary-button"
-            type="button"
-            disabled
+        <div class="editor-foot">
+          <a class="source-link" href="./sources.html"
+            >模拟器底图 · 查看差异 ↗</a
           >
-            <span>保存两张截图</span
-            ><svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" />
-            </svg>
-          </button>
-          <p class="privacy-note">
-            <svg viewBox="0 0 16 16" aria-hidden="true">
-              <rect x="3" y="7" width="10" height="7" rx="2" />
-              <path d="M5 7V5a3 3 0 0 1 6 0v2" /></svg
-            >图片仅在本机处理，免费保存
-          </p>
-          <p id="status" class="status" role="status" aria-live="polite"></p>
-          <div id="download-options" class="download-options" hidden>
-            <p id="download-help">也可以分别保存 PNG</p>
-            <div class="download-links">
-              <a id="download-open" download="Duo-open.png">内屏 PNG ↓</a
-              ><a id="download-closed" download="Duo-closed.png">外屏 PNG ↓</a>
-            </div>
-          </div>
+          <button id="reset" class="text-button" type="button">重置</button>
         </div>
       </section>
       <section
@@ -132,35 +100,38 @@
         aria-labelledby="preview-title"
         aria-busy="true"
       >
-        <div class="preview-heading">
-          <h2 id="preview-title">效果预览</h2>
-          <span id="render-state" class="render-state">正在准备底图</span>
-        </div>
-        <div class="view-switcher" role="tablist" aria-label="选择预览形态">
-          <button
-            id="tab-open"
-            role="tab"
-            aria-selected="true"
-            aria-controls="panel-open"
-            tabindex="0"
-            data-mode="open"
+        <div class="preview-toolbar">
+          <h2 id="preview-title" class="visually-hidden">截图预览</h2>
+          <div class="view-switcher" role="tablist" aria-label="选择预览形态">
+            <button
+              id="tab-open"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-open"
+              tabindex="0"
+              data-mode="open"
+            >
+              展开内屏</button
+            ><button
+              id="tab-closed"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-closed"
+              tabindex="-1"
+              data-mode="closed"
+            >
+              合起外屏
+            </button>
+          </div>
+          <span id="render-state" class="render-state" role="status"
+            >正在准备底图</span
           >
-            展开内屏</button
-          ><button
-            id="tab-closed"
-            role="tab"
-            aria-selected="false"
-            aria-controls="panel-closed"
-            tabindex="-1"
-            data-mode="closed"
-          >
-            合起外屏
-          </button>
         </div>
         <div class="screens" data-mode="open">
           <figure
             id="panel-open"
             class="screen screen-open"
+            role="tabpanel"
             aria-labelledby="tab-open"
           >
             <div class="screen-surface">
@@ -179,6 +150,7 @@
           <figure
             id="panel-closed"
             class="screen screen-closed"
+            role="tabpanel"
             aria-labelledby="tab-closed"
           >
             <div class="screen-surface">
@@ -195,12 +167,32 @@
             </figcaption>
           </figure>
         </div>
-        <p class="preview-note">保留底图原始尺寸，预览会随编辑更新。</p>
       </section>
+      <div class="save-area">
+        <button id="save-button" class="primary-button" type="button" disabled>
+          <span>保存两张截图</span
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" />
+          </svg>
+        </button>
+        <p class="privacy-note">
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <rect x="3" y="7" width="10" height="7" rx="2" />
+            <path d="M5 7V5a3 3 0 0 1 6 0v2" /></svg
+          >图片仅在本机处理，免费保存
+        </p>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <div id="download-options" class="download-options" hidden>
+          <p id="download-help">也可以分别保存 PNG</p>
+          <div class="download-links">
+            <a id="download-open" download="Duo-open.png">内屏 PNG ↓</a
+            ><a id="download-closed" download="Duo-closed.png">外屏 PNG ↓</a>
+          </div>
+        </div>
+      </div>
     </main>
     <footer class="footer">
-      <span>Duo截图生成器</span><span>本地生成 · 开源</span
-      ><a href="./SOURCES.md">素材说明 ↗</a>
+      <span>免费 · 本地生成</span><a href="./sources.html">底图来源</a>
     </footer>
     <noscript
       >请启用 JavaScript
